@@ -9,7 +9,7 @@ class Playlist:
 
   def add_song(self, title):
     new_song = Song(title)
-    new_song.set_title(title)
+    # new_song.set_title(title)
     new_song.set_next_song(self.__first_song)
     self.__first_song = new_song
 
@@ -35,9 +35,10 @@ class Playlist:
   def remove_song(self, title):
     current_song = self.__first_song
 
-    if (current_song.get_title() == title.title()):
+    if current_song.get_title() == title:
         self.__first_song = current_song.get_next_song()
-        return print(f'Deleted {title} from Playlist')
+        print(f'{current_song.get_title()} has been deleted!')
+        return
 
     else: 
       while current_song.get_title() != title:
@@ -53,7 +54,12 @@ class Playlist:
   # TODO: Create a method called length, which returns the number of songs in the playlist.
 
   def length(self):
-    pass
+        index = 0
+        current_song = self.__first_song
+        while(current_song):
+            index += 1
+            current_song = current_song.get_next_song()
+        return index
 
 
   # TODO: Create a method called print_songs that prints a numbered list of the songs in the playlist.
@@ -64,6 +70,13 @@ class Playlist:
   # 3. Song Title 3
 
   def print_songs(self):
-    pass
+    current_song = self.__first_song
+    index = 1
+
+    while current_song != None:
+      print(f'{index}. {current_song.get_title()}')
+      index += 1
+      current_song = current_song.get_next_song()
+      
 
   
