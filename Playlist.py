@@ -77,6 +77,3 @@ class Playlist:
       print(f'{index}. {current_song.get_title()}')
       index += 1
       current_song = current_song.get_next_song()
-      
-
-  
